@@ -62,5 +62,14 @@ public class Denuncias {
 	
 	@Column(name="activo",nullable=false)
 	private Boolean activo;
+
+	public Denuncias orElseThrow(Object object) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+	
 }
 

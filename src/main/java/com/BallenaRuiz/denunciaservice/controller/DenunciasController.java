@@ -60,6 +60,12 @@ public class DenunciasController {
 		DenunciasDTO denunciasDTO=converter.fromEntity(denuncias); // se envia una entidad y lo convierte a un DTO
 		return new WrapperResponse<DenunciasDTO>(true,"success",denunciasDTO).createResponse(HttpStatus.OK); //retorna un DTO
 	}
+	@GetMapping(value="/usuario/{dni}") //Notaciòn
+	public ResponseEntity<WrapperResponse<DenunciasDTO>> finByDni(@PathVariable("dni")String dni){
+		Denuncias denuncias = service.finByDni(dni);
+		DenunciasDTO denunciasDTO=converter.fromEntity(denuncias); // se envia una entidad y lo convierte a un DTO
+		return new WrapperResponse<>(true,"success",denunciasDTO).createResponse(HttpStatus.OK); //retorna un DTO
+	}
 	
 	@PostMapping()
 	public ResponseEntity<DenunciasDTO> create(@RequestBody DenunciasDTO denunciasDTO){ //esperando un articulo DTO
@@ -80,4 +86,5 @@ public class DenunciasController {
 		service.delete(id);
 		return new WrapperResponse(true,"success",null).createResponse(HttpStatus.OK);
 	}
+	
 }

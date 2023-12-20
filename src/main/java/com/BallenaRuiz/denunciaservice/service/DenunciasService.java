@@ -10,6 +10,7 @@ public interface DenunciasService {
 	//Metodos
 	public List<Denuncias> findAll(Pageable page);
 	public List<Denuncias> finByDni(String dni,Pageable page ); //Busqueda
+	public Denuncias finByDni (String dni);
 	public Denuncias findById (int id);
 	public Denuncias save (Denuncias denuncias);
 	public Denuncias update (Denuncias denuncias);

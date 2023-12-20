@@ -65,6 +65,21 @@ public class DenunciasServiceImpl implements DenunciasService {
 			throw new GeneralServiceException(e.getMessage(),e);
 		}
 	}
+	
+	
+	@Override
+	@Transactional(readOnly = true)
+	public Denuncias finByDni(String dni) {
+	    try {
+	        return repository.findByDniContaining(dni).orElseThrow(() -> new NoDataFoundException("No existe el DNI"));
+	    } catch (ValidateServiceException | NoDataFoundException e) {
+	        log.info(e.getMessage(), e);
+	        throw e;
+	    } catch (Exception e) {
+	        log.error(e.getMessage(), e);
+	        throw new GeneralServiceException(e.getMessage(), e);
+	    }
+	}
 
 	@Override
 	@Transactional
